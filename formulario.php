@@ -17,16 +17,20 @@
         crossorigin="anonymous"></script>
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" 
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-        <link rel="stylesheet" href="style.css"/> 
+        
+
+        <link rel="stylesheet" href="style_formulario.css"/> 
         <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" 
         crossorigin="anonymous"></script>
         <!--javascript queries-->
+        <script src="config.js"></script>
+        <script src="myjavascript_vanilla.js"></script>
     </head>
     <body>
         <div class="container-fluid">
-            <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar colormenu">
-                <a class="navbar-brand textcolorblack" href="#">
-                    <img src="images.png" height="30" alt="Wb logo">
+            <nav class="navbar fixed-top navbar-expand-lg scrolling-navbar colormenu">
+                <a class="navbar-brand textcolorwhite" href="#">
+                    <img src="assets/images.png" height="30" alt="Wb logo">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,12 +39,12 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link fontuse textcolorblack" href="#">
+                            <a class="nav-link fontuse textcolorwhite" href="#">
                                 Home <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle dropdown fontuse" 
+                            <a class="nav-link dropdown-toggle dropdown fontuse textcolorblack" 
                             id="navbarDropdownMenuLink" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false" href="#">More
                             </a>
@@ -54,13 +58,13 @@
                 </div>
             </nav>
         </div>
-        <div class="container-fluid pl-0 pr-0">
+        <div class="container-fluid pl-0 pr-0 featurebody generic">
             <div class="row no-gutters">
                 <div class="col-lg-12 col-md-12 col-sm-12 ">
                         <div class="generic">
                             <div class="input-group mb-3 active-pink">
                                 <input type="text" class="form-control fontuse fontsizebig" placeholder="Search..." 
-                                aria-label="Recipient's username" id="city" name="city">
+                                aria-label="Recipient's username" id="city" name="country">
                                 <div class="input-group-append">
                                     <button class="btn btn-outline-secondary dropbtn fontuse fontsizebig" 
                                     id="submitlocation" type="button">Submit</button>
@@ -88,9 +92,6 @@
        
         <div class="container-fluid" style="display:none">
             <div id="log"></div>
-        </div>
-        <div class="container-fluid" style="display:none">
-            <div id="log3">Nothing to show yet</div>
         </div>
     </body>
 </html>

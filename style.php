@@ -1,3 +1,4 @@
+<?php Header ("Content-type: text/css; charset=utf-8");?> 
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)*/
@@ -58,7 +59,7 @@
 
  .colormenu
  {
-     /*background-color: ;*/
+     background-color:#ffe34d;
      border-radius:14px
      
  }
@@ -181,10 +182,10 @@ div.generic-error{
     color: black;
 }
 .featurebody {
-   background: url(backgroundworld.jpg);
+   background: url(/assets/backgroundworld.jpg);
     color: #000305;
     text-align: left;
-   /* background-size:cover;*/
+    background-size:cover;
 }
 .Box{ 
     display: inline-block; 

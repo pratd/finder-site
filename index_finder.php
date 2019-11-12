@@ -1,6 +1,7 @@
 <?php
 $the_big_array=[];
-$file_name="countries.csv";
+$file_name="assets/countries.csv";
+$numberofColumns=1;
 if (($handle = fopen($file_name, "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
        $the_big_array[]=$data;
@@ -9,8 +10,16 @@ if (($handle = fopen($file_name, "r")) !== FALSE) {
 }
 /*
 echo "<pre>";
-var_dump($the_big_array[245][3]);
+var_dump($the_big_array);
 echo "</pre>";*/
+//store the variables in array for the country name;
+$country_name=[];
+for($i=0; $i<count($the_big_array); $i++){
+    $country_name[] = $the_big_array[$i][3];
+}
+$json_country = json_encode($country_name);
+
+// the next part is to convert the array to a json object
 $columns = $the_big_array[0];
 for ($i=1; $i<count($the_big_array)-1; $i++){
     foreach ($columns as $column_index => $column){
@@ -18,6 +27,13 @@ for ($i=1; $i<count($the_big_array)-1; $i++){
     }
 }
 $json = json_encode($obj);
-/*echo $json;*/
+
+//include the files for html
 include 'formulario.php';
+
+//get the search value and match with the array
+/*
+if($_GET['q']){
+    $json;
+}*/
 ?>
