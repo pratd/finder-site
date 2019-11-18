@@ -47,6 +47,66 @@ $result=NULL;
 if (isset($_POST['country'])) {
     $name = $_POST['country'];
 }
+////////////////////////////////////////////
+//create a new csv and store requests;veryImp
+///////////////////////////////////////////
+$headerkeys=["Countryname", "Requests"];
+$outputFileName='output.csv';
+$count='1';
+//create headers
+if (!file_exists($outputFileName)) {
+    $fp = fopen($outputFileName,'a');
+    //add BOM to fix UTF-8 in Excel
+    fputs($fp, $bom =( chr(0xEF) . chr(0xBB) . chr(0xBF) ));
+    fputcsv($fp, $headerkeys, $delimiter=";");
+}
+else {
+    $fp = fopen($outputFileName,'a');
+
+}
+
+//increase count
+
+$Copyitem = copy($outputFileName,'temp.csv');
+$tempfile = 'temp.csv';
+if(($fp = fopen($tempfile, "r")) !== FALSE){
+    while (($data= fgetcsv($fp, 1000, ";")) !== FALSE) {
+        if($name==$data[0]){
+            $count= $count+$data[1];
+        break;
+        }
+    }
+    fclose($fp);
+}
+//check if it already exists
+$Temp = file($outputFileName, FILE_IGNORE_NEW_LINES);
+$deleted = false;
+foreach ($Temp as $index => $temp_line) {
+    $split = str_getcsv($temp_line, $delimiter = ';');
+    //var_dump ($split);
+    if ($split[0] == $name) {
+        unset ($Temp[$index]);
+        $deleted=true;
+        //$count+=1;
+        //echo $deleted;
+    }
+}
+//var_dump($Temp);
+if ($deleted) {
+    $file = fopen($outputFileName,"w");
+    foreach(array($Temp) as $data){
+     fputcsv($file, $data);
+    } 
+}
+$handle = fopen($outputFileName, "a");
+if (($handle = fopen($outputFileName, "a")) !== FALSE){
+    $content=$name.";".$count;
+    fputcsv($handle,explode(';',$content), ";");
+}
+fclose($handle);
+/////////////////////////////////////////////////
+////////////////////////////////////////////////
+
 //var_dump($the_big_array[46]);
 for($i=0; $i<count($the_big_array);$i++){
     if ($countriesName[$i]->countryname==$name){
@@ -62,14 +122,6 @@ if($result){
 }else{
     print_r(json_encode($final_answer['data_countryname']));
 }
-//print_r(json_encode($final_answer));
-//echo $name
-//get the search value and match with the array
-//echo $json_country
-/*
-if($_GET['q']){
-    $json;
-}*/
-// $_POST("country") ;
+
 
 ?>
